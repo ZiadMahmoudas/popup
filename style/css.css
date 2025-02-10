@@ -1,0 +1,40 @@
+img{
+    cursor: pointer;
+}
+.inner-container{
+    min-height: 80vh;
+    display: flex;
+}
+
+.popcontainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popcontainer .popItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+.popcontainer .popItem #close{
+    position: absolute;
+    cursor: pointer;
+    right: 10%;
+    top: 20%;
+    z-index: 100;
+}
+.popcontainer .popItem #left{
+    cursor: pointer;
+   
+}
+.popcontainer .popItem #right{
+    cursor: pointer;
+}
