@@ -9,10 +9,14 @@ var currentIndex = 0;
 
 images.forEach(function(el,index){
    img.push(el.getAttribute("src"));
-    el.addEventListener("click",function(e){
-      currentIndex = index;
+   el.addEventListener("click",function(e){
+    currentIndex = index
       popImg.src = img[currentIndex];
       popContainer.style.display = "flex"
+    })
+    this.addEventListener("mousemove",function(){
+     popImg.style.cursor = "pointer";    
+        setTimeout(()=>popImg.style.cssText = "cursor:none",8500)
     })
 
 })
@@ -41,17 +45,11 @@ this.addEventListener("keydown",function(e){
     }
 })
 function nextslider(){
-currentIndex++;
-if(currentIndex === img.length){
-    currentIndex = 0;
-}
+currentIndex = (currentIndex + 1 ) % img.length;
 popImg.src = img[currentIndex]
 }
 function preslider(){
-    currentIndex--;
-    if(currentIndex < 0){
-        currentIndex = img.length - 1;
-    }
+currentIndex = (currentIndex - 1 + img.length ) % img.length
 popImg.src = img[currentIndex]
    
 }
@@ -59,3 +57,4 @@ popImg.src = img[currentIndex]
 function closeTab(){
     popContainer.style.display = "none"
 }
+

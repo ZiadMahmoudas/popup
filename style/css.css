@@ -12,6 +12,7 @@ img{
     min-height: 80vh;
     display: flex;
     padding-bottom: 25px;
+    
 }
 .rat{
     position: relative;
@@ -56,6 +57,7 @@ img{
     justify-content: space-between;
     align-items: center;
     position: relative;
+
 }
 .popcontainer .popItem #close{
     position: absolute;
