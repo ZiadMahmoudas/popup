@@ -1,42 +1,58 @@
-let images = document.querySelectorAll(".container div img");
-let close_btn = document.getElementById("close");
-let left_btn = document.getElementById("left");
-let right_btn = document.getElementById("right");
-let popItem = document.getElementsByClassName("popItem")[0]
-let popContainer = document.querySelector(".popcontainer");
-let img = [];
-let currentIndex = 0;
+var images = document.querySelectorAll(".container div img");
+var close_btn = document.getElementById("close");
+var left_btn = document.getElementById("left");
+var right_btn = document.getElementById("right");
+var popImg = document.getElementById("popImg")
+var popContainer = document.querySelector(".popcontainer");
+var img = [];
+var currentIndex = 0;
 
-for(var i = 0 ; i < images.length;i++){
-    images[i].addEventListener("click",function(){
-        let src = this.getAttribute("src");
-        img.push(src)
-        popContainer.style.display = "flex"
+images.forEach(function(el,index){
+   img.push(el.getAttribute("src"));
+    el.addEventListener("click",function(e){
+      currentIndex = index;
+      popImg.src = img[currentIndex];
+      popContainer.style.display = "flex"
     })
-}
+
+})
 // Esc => 27 right =>39 left => 37
 close_btn.addEventListener("click",closeTab);
 right_btn.addEventListener("click",nextslider)
 left_btn.addEventListener("click",preslider)
-
-close_btn.addEventListener("keydown",function(e){
+popContainer.addEventListener("click",function(e){
+    if (e.target === popContainer) {
+        popContainer.style.display = "none";
+    }
+    
+})
+this.addEventListener("keydown",function(e){
     if(e.keyCode === 27 ){
         closeTab();
+    }
+    else if (e.keyCode === 39){
+        nextslider()
+    }
+    else if (e.keyCode === 37){
+        preslider() 
+    }
+    else if(e.keyCode === 32){
+       popContainer.style.display = "flex"
     }
 })
 function nextslider(){
 currentIndex++;
-if(currentIndex >= img.length){
+if(currentIndex === img.length){
     currentIndex = 0;
 }
-console.log("ziad");
+popImg.src = img[currentIndex]
 }
 function preslider(){
     currentIndex--;
-    if(currentIndex < img.length){
+    if(currentIndex < 0){
         currentIndex = img.length - 1;
     }
-    console.log("ziad");
+popImg.src = img[currentIndex]
    
 }
 
